@@ -984,6 +984,7 @@ static inline int nsvg__div255(int x)
     return ((x+1) * 257) >> 16;
 }
 
+//swap to bgra,hjx 2021.12.8
 static void nsvg__scanlineSolid(unsigned char* dst, int count, unsigned char* cover, int x, int y,
 								float tx, float ty, float scale, NSVGcachedPaint* cache)
 {
@@ -1005,14 +1006,14 @@ static void nsvg__scanlineSolid(unsigned char* dst, int count, unsigned char* co
 			b = nsvg__div255(cb * a);
 
 			// Blend over
-			r += nsvg__div255(ia * (int)dst[0]);
+			b += nsvg__div255(ia * (int)dst[0]);
 			g += nsvg__div255(ia * (int)dst[1]);
-			b += nsvg__div255(ia * (int)dst[2]);
+			r += nsvg__div255(ia * (int)dst[2]);
 			a += nsvg__div255(ia * (int)dst[3]);
 
-			dst[0] = (unsigned char)r;
+			dst[0] = (unsigned char)b;
 			dst[1] = (unsigned char)g;
-			dst[2] = (unsigned char)b;
+			dst[2] = (unsigned char)r;
 			dst[3] = (unsigned char)a;
 
 			cover++;
@@ -1048,14 +1049,14 @@ static void nsvg__scanlineSolid(unsigned char* dst, int count, unsigned char* co
 			b = nsvg__div255(cb * a);
 
 			// Blend over
-			r += nsvg__div255(ia * (int)dst[0]);
+			b += nsvg__div255(ia * (int)dst[0]);
 			g += nsvg__div255(ia * (int)dst[1]);
-			b += nsvg__div255(ia * (int)dst[2]);
+			r += nsvg__div255(ia * (int)dst[2]);
 			a += nsvg__div255(ia * (int)dst[3]);
 
-			dst[0] = (unsigned char)r;
+			dst[0] = (unsigned char)b;
 			dst[1] = (unsigned char)g;
-			dst[2] = (unsigned char)b;
+			dst[2] = (unsigned char)r;
 			dst[3] = (unsigned char)a;
 
 			cover++;
@@ -1095,14 +1096,14 @@ static void nsvg__scanlineSolid(unsigned char* dst, int count, unsigned char* co
 			b = nsvg__div255(cb * a);
 
 			// Blend over
-			r += nsvg__div255(ia * (int)dst[0]);
+			b += nsvg__div255(ia * (int)dst[0]);
 			g += nsvg__div255(ia * (int)dst[1]);
-			b += nsvg__div255(ia * (int)dst[2]);
+			r += nsvg__div255(ia * (int)dst[2]);
 			a += nsvg__div255(ia * (int)dst[3]);
 
-			dst[0] = (unsigned char)r;
+			dst[0] = (unsigned char)b;
 			dst[1] = (unsigned char)g;
-			dst[2] = (unsigned char)b;
+			dst[2] = (unsigned char)r;
 			dst[3] = (unsigned char)a;
 
 			cover++;

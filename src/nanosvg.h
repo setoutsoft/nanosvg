@@ -71,6 +71,9 @@ extern "C" {
 	nsvgDelete(image);
 */
 
+#ifdef _WIN32
+#define strtoll _strtoui64
+#endif 
 enum NSVGpaintType {
 	NSVG_PAINT_NONE = 0,
 	NSVG_PAINT_COLOR = 1,
